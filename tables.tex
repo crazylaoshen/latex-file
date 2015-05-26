@@ -1,0 +1,101 @@
+\documentclass[titlepage,11pt]{article}
+\bibliographystyle{oupecon}
+\usepackage[abbr]{harvard}
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-0.65in}
+\addtolength{\textheight}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\renewcommand{\baselinestretch}{1.48}
+\newtheorem{coro}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{exam}{Example}
+\newtheorem{theo}{Theorem}
+\newtheorem{defi}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\newtheorem{prop}{Proposition}
+\usepackage{times}
+%\usepackage[active]{srcltx}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{tabularx}
+%\usepackage{epstopdf}
+
+
+
+
+\begin{document}
+\begin{table}
+\caption{Parameter Estimates of the "A" matrix in rotated realized MGARCH model } 
+\centering
+\resizebox{\textwidth}{!}{
+	\renewcommand{\arraystretch}{0.8}
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+	
+	\hline &   ABT & DOW & IBM & AXP & BK & C & CAT & COF & USB & WFC \\ 
+	\hline \multirow{2}{*}{ABT } & 0.7213 &  &  &  &  &  &  &  &  &  \\ 
+	                             & (0.0627)   &  &  &  &  &  &  &  &  &  \\ 
+	\hline \multirow{2}{*}{DOW } &  & 0.4775 &  &  &  &  &  &  &  &  \\ 
+	                             &  & (0.0150) &  &  &  &  &  &  &  &  \\
+	\hline \multirow{2}{*}{IBM } &  &  & 0.5150  &  &  &  &  &  &  &  \\ 
+	                             &  &  & (0.0503) &  &  &  &  &  &  &  \\
+	\hline \multirow{2}{*}{AXP } &  &  &  & 0.6125  &  &  &  &  &  &  \\
+	                             &  &  &  & (0.0308) &  &  &  &  &  &  \\
+	\hline \multirow{2}{*}{BK }  &  &  &  &  & 0.5311  &  &  &  &  &  \\ 
+	                             &  &  &  &  & (0.0143) &  &  &  &  &  \\
+	\hline \multirow{2}{*}{C }   &  &  &  &  &  & 0.6585 &  &  &  &  \\
+	                             &  &  &  &  &  & (0.0011) &  &  &  &  \\ 
+	\hline \multirow{2}{*}{CAT } &  &  &  &  &  &  & 0.4642  &  &  &  \\
+	                             &  &  &  &  &  &  & (0.0361) &  &  &  \\ 
+	\hline \multirow{2}{*}{COF } &  &  &  &  &  &  &  & 0.6701  &  &  \\
+	                             &  &  &  &  &  &  &  & (0.0154) &  &  \\ 
+	\hline \multirow{2}{*}{USB } &  &  &  &  &  &  &  &  & 0.7723  &  \\
+	                             &  &  &  &  &  &  &  &  & (0.0292) &  \\ 
+	\hline \multirow{2}{*}{WFC } &  &  &  &  &  &  &  &  &  & 0.5135  \\
+	                             &  &  &  &  &  &  &  &  &  & (0.0089) \\
+	        
+	\hline 
+\end{tabular} }
+\end{table}
+
+
+\begin{table}
+	\caption{Parameter Estimates of the "B" matrix in rotated realized MGARCH model } 
+	\centering
+	\resizebox{\textwidth}{!}{
+		\renewcommand{\arraystretch}{0.8}
+		\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+			
+			\hline &   ABT & DOW & IBM & AXP & BK & C & CAT & COF & USB & WFC \\ 
+			\hline \multirow{2}{*}{ABT } & 0.5835 &  &  &  &  &  &  &  &  &  \\ 
+			& (0.1073)   &  &  &  &  &  &  &  &  &  \\ 
+			\hline \multirow{2}{*}{DOW } &  & 0.8747 &  &  &  &  &  &  &  &  \\ 
+			&  & (0.0049) &  &  &  &  &  &  &  &  \\
+			\hline \multirow{2}{*}{IBM } &  &  & 0.8012  &  &  &  &  &  &  &  \\ 
+			&  &  & (0.0402) &  &  &  &  &  &  &  \\
+			\hline \multirow{2}{*}{AXP } &  &  &  & 0.7454  &  &  &  &  &  &  \\
+			&  &  &  & (0.0271) &  &  &  &  &  &  \\
+			\hline \multirow{2}{*}{BK }  &  &  &  &  & 0.8321  &  &  &  &  &  \\ 
+			&  &  &  &  & (0.0068) &  &  &  &  &  \\
+			\hline \multirow{2}{*}{C }   &  &  &  &  &  & 0.7512 &  &  &  &  \\
+			&  &  &  &  &  & (0.0003) &  &  &  &  \\ 
+			\hline \multirow{2}{*}{CAT } &  &  &  &  &  &  & 0.8547  &  &  &  \\
+			&  &  &  &  &  &  & (0.0199) &  &  &  \\ 
+			\hline \multirow{2}{*}{COF } &  &  &  &  &  &  &  & 0.7172  &  &  \\
+			&  &  &  &  &  &  &  & (0.0141) &  &  \\ 
+			\hline \multirow{2}{*}{USB } &  &  &  &  &  &  &  &  & 0.6006  &  \\
+			&  &  &  &  &  &  &  &  & (0.0453) &  \\ 
+			\hline \multirow{2}{*}{WFC } &  &  &  &  &  &  &  &  &  & 0.8514  \\
+			&  &  &  &  &  &  &  &  &  & (0.0032) \\
+			
+			\hline 
+		\end{tabular} }
+	\end{table}
+
+\end{document}

@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.23)  20 MAY 2015 14:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.23)  24 MAY 2015 17:13
 entering extended mode
-**Realized*MGARCH.tex
-("D:\google drive\Dissertation\latex file\Realized MGARCH.tex"
+**lasso*longtable.tex
+("D:\google drive\Dissertation\latex file\lasso longtable.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -172,6 +172,27 @@ Package: html 1999/07/19 v1.38 hypertext commands for latex2html (nd, hws, rrm)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\times.sty"
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count114
+))
+\Gin@req@height=\dimen107
+\Gin@req@width=\dimen108
+)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
@@ -194,46 +215,46 @@ Package: amstext 2000/06/29 v2.01
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
-\ex@=\dimen107
+\ex@=\dimen109
 ))
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen108
+\pmbraise@=\dimen110
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count114
+\inf@bad=\count115
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count115
-\leftroot@=\count116
+\uproot@=\count116
+\leftroot@=\count117
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count117
-\DOTSCASE@=\count118
+\classnum@=\count118
+\DOTSCASE@=\count119
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
-\big@size=\dimen109
+\big@size=\dimen111
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count119
-\c@MaxMatrixCols=\count120
+\macc@depth=\count120
+\c@MaxMatrixCols=\count121
 \dotsspace@=\muskip11
-\c@parentequation=\count121
-\dspbrk@lvl=\count122
+\c@parentequation=\count122
+\dspbrk@lvl=\count123
 \tag@help=\toks17
-\row@=\count123
-\column@=\count124
-\maxfields@=\count125
+\row@=\count124
+\column@=\count125
+\maxfields@=\count126
 \andhelp@=\toks18
-\eqnshift@=\dimen110
-\alignsep@=\dimen111
-\tagshift@=\dimen112
-\tagwidth@=\dimen113
-\totwidth@=\dimen114
-\lineht@=\dimen115
+\eqnshift@=\dimen112
+\alignsep@=\dimen113
+\tagshift@=\dimen114
+\tagwidth@=\dimen115
+\totwidth@=\dimen116
+\lineht@=\dimen117
 \@envbody=\toks19
 \multlinegap=\skip45
 \multlinetaggap=\skip46
@@ -241,28 +262,136 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("D:\google drive\Dissertation\latex file\Realized MGARCH.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 25.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count127
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+)
+********************************************************
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (cfiorio@um2.fr)
+********************************************************
+\skiptotal=\skip47
+\skiplinenumber=\skip48
+\skiprule=\skip49
+\skiphlne=\skip50
+\skiptext=\skip51
+\skiplength=\skip52
+\algomargin=\skip53
+\skipalgocfslide=\skip54
+\algowidth=\dimen118
+\inoutsize=\dimen119
+\inoutindent=\dimen120
+\interspacetitleruled=\dimen121
+\interspacealgoruled=\dimen122
+\interspacetitleboxruled=\dimen123
+\algocf@inoutbox=\box28
+\algocf@inputbox=\box29
+\AlCapSkip=\skip55
+\AlCapHSkip=\skip56
+\algoskipindent=\skip57
+\algocf@nlbox=\box30
+\algocf@hangingbox=\box31
+\algocf@untilbox=\box32
+\algocf@skipuntil=\skip58
+\algocf@capbox=\box33
+\algoheightruledefault=\skip59
+\algoheightrule=\skip60
+\algotitleheightruledefault=\skip61
+\algotitleheightrule=\skip62
+\c@algocfline=\count128
+\c@algocfproc=\count129
+\c@algocf=\count130
+\algocf@algoframe=\box34
+\algocf@algobox=\box35
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen124
+\captionmargin@=\dimen125
+\captionwidth=\dimen126
+\caption@tempdima=\dimen127
+\caption@indent=\dimen128
+\caption@parindent=\dimen129
+\caption@hangindent=\dimen130
+)
+\c@ContinuedFloat=\count131
+Package caption Info: hyperref package is loaded.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+\bigstrutjot=\dimen131
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip63
+\LTright=\skip64
+\LTpre=\skip65
+\LTpost=\skip66
+\LTchunksize=\count132
+\LTcapwidth=\dimen132
+\LT@head=\box36
+\LT@firsthead=\box37
+\LT@foot=\box38
+\LT@lastfoot=\box39
+\LT@cols=\count133
+\LT@rows=\count134
+\c@LT@tables=\count135
+\c@LT@chunks=\count136
+\LT@p@ftn=\toks21
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen133
+\lightrulewidth=\dimen134
+\cmidrulewidth=\dimen135
+\belowrulesep=\dimen136
+\belowbottomsep=\dimen137
+\aboverulesep=\dimen138
+\abovetopsep=\dimen139
+\cmidrulesep=\dimen140
+\cmidrulekern=\dimen141
+\defaultaddspace=\dimen142
+\@cmidla=\count137
+\@cmidlb=\count138
+\@aboverulesep=\dimen143
+\@belowrulesep=\dimen144
+\@thisruleclass=\count139
+\@lastruleclass=\count140
+\@thisrulewidth=\dimen145
+)
+("D:\google drive\Dissertation\latex file\lasso longtable.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 30.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-\AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring OFF on input line 25.
+\AtBeginShipoutBox=\box40
+Package hyperref Info: Link coloring OFF on input line 30.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -270,152 +399,85 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count126
+\c@section@level=\count141
 )
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
-LaTeX Info: Redefining \nameref on input line 25.
+LaTeX Info: Redefining \ref on input line 30.
+LaTeX Info: Redefining \pageref on input line 30.
+LaTeX Info: Redefining \nameref on input line 30.
 
-("D:\google drive\Dissertation\latex file\Realized MGARCH.out")
-("D:\google drive\Dissertation\latex file\Realized MGARCH.out")
+("D:\google drive\Dissertation\latex file\lasso longtable.out")
+("D:\google drive\Dissertation\latex file\lasso longtable.out")
 \@outlinefile=\write4
-Package hyperref Info: *** compatibility with harvard ****  on input line 25.
-LaTeX Font Info:    Try loading font information for U+msa on input line 34.
+Package hyperref Info: *** compatibility with harvard ****  on input line 30.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count142
+\scratchdimen=\dimen146
+\scratchbox=\box41
+\nofMPsegments=\count143
+\nofMParguments=\count144
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count145
+\MPscratchDim=\dimen147
+\MPnumerator=\count146
+\makeMPintoPDFobject=\count147
+\everyMPtoPDFconversion=\toks23
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: longtable package is loaded.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\ltcaption.sty"
+Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 32.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 34.
+LaTeX Font Info:    Try loading font information for U+msb on input line 32.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+)
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 36.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
 
-
-LaTeX Warning: Citation 'Rivers/Vuong:2002' on page 1 undefined on input line 3
-7.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
-
+Underfull \vbox (badness 10000) detected at line 54
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.42 \end{abstract}
-                    [1]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 44.
 
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Warning: Citation 'Vuong:1989' on page 1 undefined on input line 46.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 107.
+[1
 
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
 
-LaTeX Warning: Citation 'Rivers/Vuong:2002' on page 1 undefined on input line 4
-6.
-
-
-LaTeX Warning: Citation 'Vuong:1989' on page 1 undefined on input line 46.
-
-
-LaTeX Warning: Citation 'Rivers/Vuong:2002' on page 1 undefined on input line 4
-6.
-
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
-
-LaTeX Warning: Citation 'Rivers/Vuong:2002' on page 1 undefined on input line 4
-7.
-
-
-LaTeX Warning: Citation 'Rivers/Vuong:2002' on page 1 undefined on input line 4
-7.
-
-
-LaTeX Warning: Citation 'Rivers/Vuong:2002' on page 1 undefined on input line 5
-0.
-
-
-LaTeX Warning: Citation 'Rivers/Vuong:2002' on page 1 undefined on input line 5
-0.
-
-
-LaTeX Warning: Citation 'Rivers/Vuong:2002' on page 1 undefined on input line 5
-1.
-
-
-LaTeX Warning: Citation 'Marcellino/Rossi:2008' on page 1 undefined on input li
-ne 51.
-
-
-LaTeX Warning: Citation 'Kitamura:2002' on page 1 undefined on input line 51.
-
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ™ in font ptmr7t!
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.56 
-      [1]
-Overfull \hbox (9.47823pt too wide) in paragraph at lines 80--83
-[]\OT1/ptm/m/n/10.95 We use $[]$ be-fore ma-trix to rep-re-sen-t the prin-ci-pa
-l ma-trix log-a-rith-m. For most matrices,$[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/
-it/10.95 A\OT1/cmr/m/n/10.95 )) =$
- []
-
-[2]
-Overfull \hbox (22.56042pt too wide) in paragraph at lines 84--85
-[]\OT1/ptm/m/n/10.95 Even the BEKK-type pa-ram-e-ter-i-za-tion in ([]2[]) has $
-\OML/cmm/m/it/10.95 O\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 K[]\OT1/cmr/m/n/10
-.95 )$ \OT1/ptm/m/n/10.95 pa-ram-e-ter-s. To avoid the curse-of-dimensionality
- []
-
-[3] [4]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 186.
- [5] ("D:\google drive\Dissertation\latex file\Realized MGARCH.bbl")
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
-
-("D:\google drive\Dissertation\latex file\Realized MGARCH.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
-Package rerunfilecheck Info: File `Realized*MGARCH.out' has not changed.
+("D:\google drive\Dissertation\latex file\lasso longtable.aux")
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 107.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 107.
+Package rerunfilecheck Info: File `lasso*longtable.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
  ) 
 Here is how much of TeX's memory you used:
- 5711 strings out of 495352
- 81518 string characters out of 3182704
- 161230 words of memory out of 3000000
- 8811 multiletter control sequences out of 15000+200000
- 35998 words of font info for 85 fonts, out of 3000000 for 9000
+ 8855 strings out of 495352
+ 129899 string characters out of 3182704
+ 241674 words of memory out of 3000000
+ 11941 multiletter control sequences out of 15000+200000
+ 13183 words of font info for 38 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 44i,14n,28p,1395b,387s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,14n,44p,263b,420s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/
-times/utmri8a.pfb>
-Output written on "Realized MGARCH.pdf" (7 pages, 160511 bytes).
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/urw/times/utmri8a.pfb>
+Output written on "lasso longtable.pdf" (2 pages, 44288 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 34 PDF objects out of 1000 (max. 8388607)
+ 5 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

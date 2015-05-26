@@ -1,0 +1,520 @@
+\documentclass[titlepage,11pt]{article}
+\bibliographystyle{oupecon}
+\usepackage[abbr]{harvard}
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-0.65in}
+\addtolength{\textheight}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\renewcommand{\baselinestretch}{1.48}
+\newtheorem{coro}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{exam}{Example}
+\newtheorem{theo}{Theorem}
+\newtheorem{defi}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\newtheorem{prop}{Proposition}
+\usepackage{times}
+%\usepackage[active]{srcltx}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{longtable}
+%\usepackage{epstopdf}
+
+\begin{document}
+\title{Realized Rotated Multivariate GARCH Model\thanks{xxxxxxxx.}}
+\author {Denis Pelletier\\North Carolina
+State University\thanks{Department of Economics, Box 8110, North
+	Carolina State University, Raleigh, NC 27695-8110, USA. Email:
+	denis\_pelletier@ncsu.edu}\\and\\Ji Shen\\North Carolina
+State University\thanks{xxxxxxxx}}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\begin{abstract}
+xxxxxx \possessivecite{Rivers/Vuong:2002}xxxxxxxxxx.\\[0.2in]
+
+\noindent {\it JEL classification:} C10, C32\\
+{\it Keywords:} xxxxxx, xxxxxx, xxxxxxx.
+\end{abstract}
+\pagenumbering{arabic}
+\section{Introduction}
+
+
+
+\section{Realized Multivariate GARCH model}
+\subsection{Definitions and Notations}
+In this section we introduce the Realized multivariate GARCH model. Assuming we have k assets, $r_t$ is the $k \times 1$ vector of returns for the k assets in day t. We will assume $E(r_t|\mathcal{F}_{t-1})=0 $, which is a legitimate assumption from the empirical work. Otherwise we could always reinterpret rt as the return minus it's constant mean to meet this assumption. They key interest of financial application resides on the conditional variance, $H_t=var(r_t|\mathcal{F}_{t-1})$, where $r_t$ is a vector of time series of returns, $\mathcal{F}_{t-1}$ is the filtration till time t-1. In the GARCH (1, 1) model the conditional variance is a function of lagged itself and squared daily return. In the present framework, $H_t$ will depend on $X_{t-1}$, which represents a realized measure of volatility, such as matrix of realized covariance, bipower variation or realized kernel. The measurement equation link the realized measure to the latent make the model complete. Thus the Realized GARCH model fully specifies the dynamic system of daily returns and realized measure.
+ 
+
+The main challenges in multivariate volatility modelling is to ensure that the conditional covariance matrix is positive semidefinite. The BEKK model proposed by Engle and Kroner(1995) could approach this challenge .
+We could specify a particular BEKK-type system as follows:
+
+
+\begin{align}
+	\label{return}
+	r_t = H^{1/2} z_t \nonumber\\
+	z_t \overset{i.i.d} {\sim} \mathcal{N}(0,I_k) \nonumber\\
+	E[P_t|\mathcal{F}_{t-1}]=E[r_t r_t'|\mathcal{F}_{t-1}]=H_t \nonumber\\
+	P_t = H_t^{1/2}\xi_t H_t^{1/2}
+\end{align}
+where conditional covariance follows a GARCH(1,1) process
+\begin{equation}
+	\label{realgarch}
+	 H_t=CC'+ B\,  H_{t-1} \,B+A \,  X_{t-1} \, A
+\end{equation}
+and 
+\begin{equation}
+	\label{measurement}
+	 x_t= D+ \Gamma  h_t+ u_t
+\end{equation}
+
+We refer to first two equation as the return equation and the Realized GARCH equation. Since the realized measure $X_t$ could be interpreted as a measurement of conditional covariance $H_t$, the last equation is referred as the measurement equation.
+  In (\ref{return}), $\xi_t = z_t z_t'$ is $k \times k$ symmetric innovation matrix which is outer product of innovation vector $z_t$,satisfying $E_{t-1}[\xi_t]=I_k$, where $I_k$ is an identity matrix. 
+In (\ref{realgarch}), we define the symmetric square root of a positive semidefinite matrix H, denoted by $H^{1/2}$, using the spectral decomposition such that $H^{1/2} = U \Lambda^{1/2} U$ where U is a matrix containing the eigenvectors of H, and $\Lambda^{1/2}$ is a diagonal matrix containing the square root of the eigenvalues of H. In (\ref{measurement}) We define $x_t = vech(\log X_t)$ and similarly $h_t = vech(\log H_t)$ where the vech operator stacks the lower triangular part including the main diagonal of a $(k \otimes k)$ symmetric matrix into a $(k^* \otimes 1)$ column vector, where $k^*= k(k+1)/2$. We use $\log$ before matrix to represent the principal matrix logarithm. For most matrices,$\log (\exp(A)) = A =\exp(\log(A))$. 
+
+
+\subsection{Parameterization}
+The $k \times k$ matrices B, A each have $k^2$ free parameters, while C is $k \times k$ a lower triangular matrix with $k^*$ free parameters. The parameterization in (\ref{realgarch}) guarantee that $ H_t$ is positive semidefinite for all t assuming the starting value $H_0$ is positive semidefinite. Moreover, if C is full rank matrix, then $H_t$ is positive definite for all t. The coefficient matrix B determines the persistence of the Realized MGARCH model. To make sure the covariance stationarity, the eigenvalues of the coefficient matrix B must be less than one in modulus. 
+Since $ X_t$ and $ H_t$ are supposed to be symmetric matrix, the vech operator vectorizing the low triangular part including the main diagonal of a $k \times k$ symmetric matrix into a $k^* \times 1$ vector. Hence, $x_t$, D, $h_t$ and $u_t$ are all  $k^* \times 1$ vectors . Moreover, the innovation $u_t \overset{i.i.d} {\sim} \mathcal{N}(\mu,\delta^2)$. The coefficient matrix $\Gamma$ is a $k^* \times k^*$ matrix.  This matrix characterize the correlation between realized measure and all the elements of conditional covariance matrix. Specifically it forms a seemingly unrelated regression between the two variables. As a result, the equation (\ref{measurement}) will have $O(k^4)$ parameters, which will suffer the curse-of-dimensionality problem. Since the measurement equation could be estimated with linear regression, which is an easy task in computer. So the problem of high dimensionality is not about  burden of computation but the prediction variation produced by too many parameters.
+
+Even the BEKK-type parameterization in (\ref{realgarch}) has $O(k^2)$ parameters. To avoid the curse-of-dimensionality problem here we could impose that A and B are diagonal matrices, which yields the diagonal Realized MGARCH model. In this case, the equations for each element in the matrix $H_t$ would characterize a bunch of univariate Realized GARCH models in which the conditional variance or covariance is driven by their own lags and the corresponding realized measure. If the elements of A, B are unrestricted which is a full parameterization, the evolution of every element in $H_t$ will be influenced by their own lags as well as every cross-asset effects Realized MGARCH model. 
+
+For demonstration, we write out the 2 by 2 case of  (\ref{realgarch}) 
+\begin{align*}
+ \left(\begin{array}{cc}
+h_{11,t} & h_{12,t} \\
+h_{21,t} & h_{22,t} 
+\end{array}\right) 
+&= \left( \begin{array}{cc}
+c_{11} & 0 \\
+c_{21} & c_{22} 
+\end{array} \right)\left( \begin{array}{cc}
+c_{11} & 0 \\
+c_{21} & c_{22} 
+\end{array} \right)' 
+\\ & \quad + \left( \begin{array}{cc}
+b_{11} & 0 \\
+0 & b_{22} 
+\end{array} \right)\left(\begin{array}{cc}
+h_{11,t-1} & h_{12,t-1} \\
+h_{21,t-1} & h_{22,t-1} 
+\end{array}\right)\left( \begin{array}{cc}
+b_{11} & 0 \\
+0 & b_{22} 
+\end{array} \right)
+\\ & \quad + \left( \begin{array}{cc}
+a_{11} & 0 \\
+0 & a_{22} 
+\end{array} \right)\left(\begin{array}{cc}
+x_{11,t-1} & x_{12,t-1} \\
+x_{21,t-1} & x_{22,t-1} 
+\end{array}\right)\left( \begin{array}{cc}
+a_{11} & 0 \\
+0 & a_{22} 
+\end{array} \right)
+\end{align*}
+
+We could write out (\ref{measurement}) of 2 by 2 case in vec form 
+
+\begin{equation*}
+\left(\begin{array}{c}
+h_{11,t}  \\
+h_{21,t} \\
+h_{22,t}\end{array}\right) = 
+\left( \begin{array}{c}
+d_{11,t}  \\
+d_{21,t} \\
+d_{31,t}\end{array}\right)
++ \left( \begin{array}{ccc}
+\gamma_{11,t} & \gamma_{12,t}  & \gamma_{13,t} \\
+\gamma_{21,t} & \gamma_{22,t}  & \gamma_{23,t} \\
+\gamma_{21,t} & \gamma_{22,t}  & \gamma_{33,t}
+\end{array} \right) 
+\left(\begin{array}{c}
+h_{11,t} \\
+h_{21,t} \\
+h_{31,t}
+\end{array}\right)
++ \left(\begin{array}{c}
+u_{11,t} \\
+u_{21,t} \\
+u_{31,t}
+\end{array} \right)
+\end{equation*}
+
+We could tell from the example that in the measurement equation, each element in the conditional covariance matrix in function of every component in the realized covariance. Clearly the measurement equation is over-parameterized. We could use shrinkage and variable selection method in the estimation to reduce elements  in coefficient matrix $\Gamma$.
+
+Note that, the (\ref{realgarch})could easily written in its vec form
+
+\begin{equation}
+\label{vecgarch}
+ h_t=\bar{C}+ \bar{B} \,  h_{t-1}+\bar{A} \,  x_{t-1}
+\end{equation}
+
+Which $\bar{B} = L_k(B\otimes B)D_k$ and $\bar{A} = L_k(A\otimes A)D_k$,C is $(k^* \times 1) $ vector, while B and A are $(k^* \times k^*)$ matrices. The elimination and duplication matrices, $L_k$ and $D_k$ are operational matrices of zeros and ones, so the parameters in (\ref{vecgarch}) are just linear transformation from the equation (\ref{realgarch}). 
+
+
+\subsection{Covariance targeting}
+The covariance targeting parameterization was introduced in Engle and Mezrich (1996) for the univariate GARCH model. The usefulness of covariance targeting in large models is that it allows for 2-step estimation which estimate the unconditional moments with empirical moments to reduce the number of parameters to be estimated.
+Since unconditional covariance of daily return and realized return are $Var[r_t]=E[H_t]=P$ and $E[X_t]=M$. In \ref{realgarch}, the covariance-targeting for $H_t$:
+\begin{equation}
+\label{targeting1}
+H_t=(P-BPB'-AMA')+ B\,  H_{t-1} \,B+A \,  X_{t-1} \, A
+\end{equation}
+assuming $(P-BPB'-AMA')$ is positive semidefinite. From \ref{targeting1}, it is difficult to specify sufficient parameter restrictions to ensure that $(P-BPB'-AMA')$ is positive semidefinite. This feature has restrained us from estimate more flexible dynamics in this model other than just assume A and B are scalars.
+We could fit the model with rotated variables to extend the idea of covariance targeting in multivariate models of any dimension. Specifically, since $r_t = P^{1/2}z_t$, we define the rotated return as 
+\begin{align}
+\label{rotate}
+z_t = P^{-1/2}r_t \nonumber \\
+Var(z_t)=I_k
+\end{align}
+The conditional covariance of the rotated returns is $Var[z_t|\mathcal{F}_{t-1}]\equiv \tilde{H_t}$, noting that $H_t = P^{1/2}\tilde{H_t}P^{1/2}$. Similarly, for realized measure of covariance, we have $X_t = M^{1/2}\tilde{X_t}M^{1/2}$. So, we got $\tilde{H_t} = P^{-1/2} H_t P^{-1/2}$, $\tilde{X_t} = M^{-1/2} X_t M^{-1/2}$. Basically, we could scale the Realized MGARCH model with the unconditional covariance matrices. A covariance-targeting realized MGARCH model is:
+\begin{align}
+\label{targeting2}
+\tilde{H_t}=(I_k-BB'-AA')+ B\,  \tilde{H}_{t-1} \,B+A \,  \tilde{X}_{t-1} \, A  \\
+E[\tilde{H_t}]=E[\tilde{X_t}]=I_k \nonumber
+\end{align}
+
+This model has 2k dynamic parameters when B and A are diagonal. It is easy to impose the positive semidefinite of $(I_k-BB'-AA')$ for this specification. For the conditional covariance matrix of unrotated returns $H_t$, the BEKK model in \ref{rotate} and \ref{targeting2} implies that
+\begin{align}
+\label{tilde}
+H_t = P^{1/2}\tilde{H_t}P^{1/2} = \tilde{CC'} + \tilde{B} H_{t-1} \tilde{B}' + \tilde{A} X_{t-1} \tilde{A}', \nonumber  \\
+ where \nonumber \\
+ \tilde{B} = P^{1/2} B P^{-1/2}, \quad \tilde{A} = P^{1/2} B M^{-1/2}, 
+ \quad \tilde{CC'} = P^{1/2} (I_k-BB'-AA') P^{1/2}
+\end{align}
+It is clear the rotated BEKK implies a BEKK specification for the original variables in a constrained version since $\tilde{A}$ and $\tilde{B}$ depend on the spectral decomposition of P and M. 
+Bauwens et.al(2006) discuss the invariance of multivariate models to linear transformation of return. In their definition, invariance means the transformed model is in the same series and keep the same dynamic specification(e.g scalar,diagonal or full parameterization). In the case of diagonal specification, our model is clearly not invariant to linear transformation. Suppose A is diagonal, then from \ref{tilde} $\tilde{A} $ is a full asymmetric matrix, which means we get a full parameterized GARCH model for the unrotated variables. 
+For the rotated model given in \ref{rotate} and \ref{targeting2}, we could easily impose the condition to ensure the long-run covariance stationary and also the positive definite of $(I_k-BB'-AA')$.
+
+\begin{assumption}
+	\label{ass_2}
+	In the Realized rotated MGARCH model given by (\ref{rotate}) and (\ref{targeting2}), $\rho(\tilde{A} \otimes \tilde{A}+\tilde{B} \otimes \tilde{B}) \le 1$.
+\end{assumption}
+This estimation is easily to impose in the estimation.
+
+
+\subsection{Calculate the realized kernel}
+
+\section{Estimation and Inference}
+\subsection{Estimation for MGARCH Equation}
+In this section we discuss the asymptotic properties of the quasi-maximum likelihood estimator within the realized MGARCH model given by (\ref{return}) and (\ref{realgarch}). We could estimate the parameters in rotated model, then reverse the linear transformation to retract the unrotated measure.
+ In traditional GARCH MODELS, the vector of daily returns is usually modeled as $R_t=Ht^{1/2} z_t$, with $z_t \overset{i.i.d} {\sim} \mathcal{N}(0,I_k)$, which motivates quasi-maximum likelihood estimation (QMLE).In our model, since $\xi_t = z_t z_t'$, the assumption that $z_t \overset{i.i.d} {\sim} \mathcal{N}(0,I_k)$ implies that $\xi$ follows a Wishart distribution. The choice of Wishart distribution is suitable for the model where the support of the random variable of interest is confined to the space of positive semidefinite matrices. 
+
+The Realized MGARCH equation is parameterized with a finite-dimensional $(\delta \times 1)$ parameter vector $\theta\in \Theta\subset \mathbb{R}^\delta $. Decompose $\theta = (\theta_s',\theta_d')'$ , where $theta_s =(p', m')' $  denote the model's unconditional moment, and let $\theta_d$ denote the vector of dynamic parameters indexing $\tilde{A}$ and $\tilde{B}$ in (\ref{tilde}). We denote the true parameter vector with $\theta_0$. 
+The parameters are estimated in 2 steps. The static parameters are to be estimated by a moment estimator
+\begin{align*}
+p' = vech (P) , \qquad m' = vech(M)\\   
+where \\
+\hat{P} = T^{-1} \sum_{t=1}^{T} r_t r_t' , \qquad 
+\hat{M} = T^{-1} \sum_{t=1}^{T} X_t
+\end{align*}
+This estimate is then decomposed into $P^{1/2}$ and $M^{1/2}$. Then we construct the time series of rotated returns and realized kernel $\hat{z_t} = \hat{P}^{-1/2}r_t,\hat{\tilde{X}_t} = \hat{M}^{-1/2}X_t\hat{M}^{-1/2} t=1,2,...,T$. Then $\theta_d$ will be estimated by QMLE in the second step. The asymptotics of the QML estimator in this 2-step procedure is a direct application of two-step GMM estimation discussed in Newey and McFadden (1994).
+
+ The log-likelihood for the $t^{th}$  observation will be denoted by $l_{t}(\theta)$ . Inference for the Realized MGARCH equation will be based on QMLE of the following log-likelihood function of Wishart density which is similar with HEAVY model in Noureldin, etc (2011).
+\begin{equation}
+l_{t}(\theta_d;\theta_s) = C-\frac{1}{2}(\log|\tilde{H}_t|+tr(\tilde{H}_t^{-1} z_t z_t'))
+\end{equation}
+where $C$ is a constant with respect to $\theta$
+We assume the initial values $H_0$ is known and is positive semidefinite. 
+The QML estimator is $\hat{\theta}_d$, where 
+\[\hat{\theta}_d = arg\,max_{\theta_d \in \Theta} L_{t}(\theta_d;\theta_s)=arg\,max_{\theta_d \in \Theta} \sum_{t=1}^{T} l_{t}(\theta_d;\theta_s)\]
+To compute the asymptotic standard errors, we construct a group of conditions of moment for each $t^th$ observation,$g_t=(g_{p,t},g_{m,t},g_{theta_d,t})$, where $g_{p,t} = p-vech(r_t r_t')$, $g_{m,t} = p-vech(X_t)$ and $g_{\theta_d,t} =\frac{\partial \log L_{t}(\theta_s,\theta_d)}{\partial \theta_d}) $. In the true parameter values, $E[g_t|\mathcal{F}_{t-1}]=0$. Under standard regularity conditions, as $T \rightarrow \infty $ we have
+\begin{align}
+\sqrt{T} (\hat{\theta}-\theta_0) \overset{d}{\rightarrow} \mathbb{N} (0, \mathcal{I}^{-1} \mathcal{J} \mathcal{I}^{-1})\\
+where \; \hat{\theta}= (\hat{\theta_s'}, \hat{\theta_d'}), and \nonumber \\
+\mathcal{J}=Var \left[\frac{1}{\sqrt{T}} \sum_{t=1}^{T}g_t\right], \mathcal{I}=E \left[\frac{\partial g_t}{\partial \theta}\right]
+\end{align} 
+
+
+\section{Adaptive LASSO}
+
+In this section, we would show that the adaptive lasso can be used to estimate the measurement equation in the Realized MGARCH model.
+\subsection{Definition and Notation}
+
+Since the measurement equation (\ref{measurement})    is a fully parameterized linear model, the coefficient matrix  has $k^{*2}$ parameters to estimate, where $k^*=k(k+1)/2$ . In fact, the equation (\ref{measurement}) could be decomposed to a group of equations seemingly unrelated, each with one dependent variable corresponding to elements of realized matrix $X_t$ which is a symmetric matrix. So we got $k^*$ univariate linear equations. Each equation has $k^*$ parameters to links the realized covariance with all the conditional covariance cross different assets.
+In practice, the coefficient $\Gamma$ is usually a sparse matrix around the identity matrix. We could use adaptive Least Absolute Selection and Shrinkage Operator (lasso) to select most significant variable and reduce others to zero to achieve the parsimony of the model.
+
+The lasso is a regularization technique for simultaneous estimation and variable selection in linear regression (Tibshirani 1996).  It just means estimating the Least Squares parameters subject to an L1 norm penalty to the slackness parameter. Since Meinshausen and Bühlmann (2004) also showed the conflict of optimal prediction and consistent variable selection in the lasso.  Zou(2006) also has shown that lasso estimator is possibly inconsistent, we will adopt the adaptive lasso which enjoys the oracle properties
+by utilizing the adaptively weighted L1 penalty proposed in the same paper.
+
+We define adaptive lasso(alasso) estimates $\beta^{alasso}$ are given by
+
+\begin{equation}
+\label{alasso_def}
+\beta^{alasso}=arg\,min_{\beta} \left\| y-\sum^p_{j=1}x_j\beta_j \right\| ^2 + \lambda_n\sum^p_{j=1}\hat{w}_j|\beta_j|
+\end{equation}
+$\hat{w}_j$  is a vector of weights, with $\hat{w}_j = 1/\|\hat{\beta}\|$ , where $\beta$ is the unpenalized OLS estimator. Note equation (\ref{alasso_def}) is a convex optimization problem, and thus it does not suffer from the multiple  local minimal issue, and its global minimizer can be easily found after the alasso solution path being efficiently computed by the LARS algorithm (Efron et al., 2004), which only require computational effort of one single OLS fit. 
+
+Based on a simpler LARS algorithm proposed by  Rosset and Zhu( 2007), the computation details  of alasso estimator are presented below:
+
+
+\begin{algorithm}[!htbp]
+	create new covariates ,$X_j^* = X_j/\hat{w}_j, j = 1,2,...,q $. where is the adaptive weight as defined above. Note both $X_j, Z_j*$ are of dimension nX1, for each j.\\
+	Solve lasso problem defined above in (\ref{alasso_def}) via LARS algorithm for given $\lambda$ , which corresponding to a ‘step’ in the algorithm, each step add one variable.\\
+	Then we substitute lasso estimator $\tilde{\beta}(\lambda)$ from step 2  in criterion equation below. This provides us a BIC value for each step.\\
+	Repeat steps 2-3 for each remaining  and record each $BIC_\lambda$ for given$\tilde{\beta}(\lambda)$ \\
+	Choose the pair of $\tilde{\beta}(\lambda)$ , which minimized BIC over $\lambda$\\
+	Output is ,$\hat{\beta}_j = \tilde{\beta}_j/\hat{w}_j, j = 1,2,...,q $. This is the adaptive lasso estimate.
+	\caption{Adaptive lasso algorithm}
+	\label{alasso_alg}
+\end{algorithm}
+
+
+\subsection{Selective Criterion}
+
+In the alasso algorithm, we have to choose a criterion to reduce the number of variables. The question of how to find a criterion involves the trade-off between bias and variance, along with the subjective desire for parsimony. 
+
+The intention of using measurement equation is to update realized volatility measure beyond one step to make multiple-period prediction. Thus the accuracy of prediction is our main concern. 
+We can not use RSS on the training data to determine these parameters, since we would always pick those that fit most parameters and hence gave smallest residuals. Such models are unlikely to predict future data well due to larger variance. The fully parameterized OLS estimate is derived from taking least squares, hence its RSS is smallest(see table1). 
+\begin{table} [!htbp]
+
+
+\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+	  
+	\hline OLS  & Shrinkage Based AIC  & Shrinkage Based BIC \\ 
+	\hline 348.53  & 357.39 & 365.62 \\ 
+	\hline 
+\end{tabular} 
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\caption{ Residual of Sum-of-Squares(RSS) of different estimate}
+\label{RSS}
+\end{table}
+
+
+We proceed with 2 popular model selection criteria-Akaike information criterion (AIC) and  Bayesian information criterion (BIC) for LASSO proposed by Zou(2006). 
+\begin{align}
+& AIC^{(p)} = \left \| y-X\beta^ {(p)} \right \|^2 + 2\sigma_\epsilon ^2 df^{(p)}  \\
+& BIC^{(p)} = \left \| y-X\beta^ {(p)} \right \|^2 + \log(n) \sigma_\epsilon ^2 df^{(p)}
+\end{align}
+
+Which Efron et al. (2004) showed that the number of degrees of freedom at each step of the LAR algorithm is well approximated by the number of non-zero elements of parameters $\beta$, $df_{LAR}^{p}=p, p=1,...,k^*$. The measure $\sigma_\epsilon^2$ represents the residual variance of OLS model, $\sigma_\epsilon^2=\frac{1}{n-k}||Y-X'\beta^{ols}||^2$ .
+
+These two criterion has different asymptotic optimality. It is well known that AIC tends to select the model with the optimal prediction performance, while BIC tends to identify the true sparse model if the true model is in the candidate list (Hastie,and Tibshirani  2007). The L1 norm restriction parameter λ controls the penalty level and therefore the model complexity. Since LARS algorithm solves the LASSO solution for all λ. With the entire LASSO solution path computed by LARS algorithm, we can immediately select the optimal model by identify the smallest value of selected criterion and the corresponding λ. We compare the two different criterion and their relationship of relative bound with df and RSS of model below. 
+
+In LASSO algorithm, an alternate tuning parameter t is used. t is called lasso parameter, which is also recognized as the absolute bound of estimated parameters $t =\sum \hat{\beta_i}^{alasso}$. It posses the one-to-one relationship with $\lambda$.  Here we define standardized version parameter, s, as the relative bound $s =\sum\hat{\beta_i}^{alasso}/\sum \hat{\beta_i}^{ols}, s\in [0,1]$. The relative bound can be seen as a standardized version of lasso parameter. 
+
+\subsection{Covariance of adaptive lasso}
+The formula for variance of ALASSO is very complicated as showed in Zou(2006). 
+\begin{equation*}
+\hat{cov}(\hat{\beta}_{\mathcal{A}}) = \sigma^2 (X_{\mathcal{A}}'X_{\mathcal{A}} + \lambda_n\sum(\hat{\beta_\mathcal{A}}))^{-1} X_{\mathcal{A}}'X_{\mathcal{A}} (X_{\mathcal{A}}'X_{\mathcal{A}} + \lambda_n\sum(\hat{\beta_\mathcal{A}}))^{-1}
+\end{equation*}
+where 
+ $\mathcal{A}$ is the active set including all variable selected by alasso,
+ and 
+$\sum(\beta) = diag(\frac{\hat{\hat{w}_1}}{|\beta_1|},...,\frac{\hat{\hat{w}_k}}{|\beta_k|})$.
+$\sigma^2$ is the variance of redidual of OLS fit which we could easily estimate with sample variance. The difficult part is that $\lambda$ is hard to extract from LARS algorithm.
+According to the fundamental theorem of statistics, The empirical distribution (ED) of a set of independent drawings of a random variables generated by some data generating process (DGP) converges to the true CDF of the  under the DGP. 
+Using this theorem, we could calculate the sample covariance with bootstrapping method proposed by Efron(1979). Bootstrapping is the practice of estimating the properties of an estimator -say, its variance- by measuring those properties when sampling from an approximating distribution (the bootstrap DGP).  SInce we don’t know the true DGP generated this parameters, we could approximate it with ED. The algorithm is shown below 
+\begin{algorithm}[!htbp]
+	Select N pairs of independent bootstrap samples$(y_1^*, x_1^8),(y_2^*, x_2^8),...,(y_n^*, n_1^8)$ with replacement from original data\\
+	Estimate the alasso parameters for each bootstrap sample $\hat{\tau}(n), n=1,2,...,N.$ \\
+	Estimate the standard error $se(\hat{\tau})$ by the empirical moment of the N group of parameters
+		
+	\(\hat{se_N} = \left[\frac{1}{N-1}\sum_{n=1}^{N}\{\hat{\tau}(n)-\bar{\hat{\tau}}\}\right] \) 
+		with
+	\(	\bar{\hat{\tau}} = \frac{1}{N} \sum_{n=1}^{N}\hat{\tau}(n)\)  
+	\caption{The Bootstrap algorithm}
+	\label{boot_alg}
+\end{algorithm}
+\section{Empirical illustration}
+The model is applied to high-frequency prices for ten stocks from the financial sector of the S\&P 100 \footnote{The ticker symbols are xxxxx}.These are: xxxxx. The sample period is mm/dd/yyyy to mm/dd/yyyy and the source of data is the TAQ database. We focus on the noise-robust realized kernel of Barndorff-Nielsen et al.(2011) as our choice for $X_t$. For the daily return and realized kernel, we focus on open-to-close returns which ignore the overnight effect.
+
+\subsection{Data Description}
+\subsection{Realized Volatility Description}
+\subsection{Daily Log-Return Description}
+\subsection{Estimation for realized GARCH model}
+\subsection{Adaptive lasso under different selective criterion}
+ We index the lasso estimate with s to illustrate the shrinkage process in two figures.
+ Figure (\ref{fig:lassoshrinkage})  shows the LASSO estimates as a function of standardized bounds. LASSO continuously shrinks the coefficients toward zero as s decreases; and some coefficients shrink to exactly zero if the constraints is sufficiently large. 
+ In  figure (\ref{fig:degreeoffreedom}), the number of variables decreases as relative bound  decreases  (penalty constraints increases).  In both figures, We show how different the model will be by selecting variables according to different criterion. The broken line represents AIC criterion, we select model at AIC=362, s= 0.32; The  solid line represents BIC criterion, we select model at BIC=371, s= 0.05. The value of s validates the sparsity of true model. Roughly, this corresponds to keeping just $30\%$  of the predictors.  In the figure (\ref{fig:MSE}) , the mean square of error of alasso estimate decreases asrelative bound  decreases  (penalty constraints increases). We could find an elbow shape in the curve, which means part of parameters don't contribute a lot for reducing the MSE. As a result, the optimal selection value of s always happens near the elbow area. 
+ 
+ \begin{figure} [!htbp]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{"../graph/lasso shrinkage"}
+ 	\caption{Lasso shrinkage of coefficient}
+ 	\label{fig:lassoshrinkage}
+ 	
+ \end{figure}
+ 
+ \begin{figure} [!htbp]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{"../graph/degree of freedom"}
+ 	\caption{Degree of freedom shrinkage}
+ 	\label{fig:degreeoffreedom}
+ \end{figure}
+ 
+ \begin{figure} [!htbp]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{../graph/MSE}
+ 	\caption{Mean Squared Error of ALASSO}
+ 	\label{fig:MSE}
+ \end{figure}
+ 
+\subsection{Estimation of Measurement equation}
+With the structure of measurement equations, each realized variance (covariance) is the function of  corresponding conditional variance (covariance) and the conditional covariance of pairs of all other assets. Assume there are three asset A, B and C, the realized variance of asset A is updated by the conditional variance of A and conditional covariance of A and B, the one of A and C,  and also the one of B and C. Apparently the conditional variance of asset A should be the main driving power in updating the realized variance of asset A. So  the coefficient of  conditional variance of asset A should be larger than other ones. As a result, the coefficient matrix should have larger elements in the diagonal position. Most elements that alasso shrinks are in the off-diagonal position. Even some diagonal elements will also shrinks since the lagged driving force in updating covariance in smaller than the one of variance. In the case of 10 assets, we got coefficient matrix in size 55*55, in the diagonal position the elements in 1, 11, 20, 28, 35, 41, 46,50,53,55 rows are near much larger than others.  In the appendix, we compared first row( other rows are similar) and diagonal elements of coefficient matrix by using OLS and alasso using AIC and BIC criterion, the number in parenthesis are standard errors.
+
+
+\section{Conclusion}
+
+\section*{Appendix}
+
+\begin{table} [!htbp]
+	\caption{Parameter Estimates of the "A" matrix in rotated realized MGARCH model } 
+	\centering
+	\resizebox{\textwidth}{!}{
+		\renewcommand{\arraystretch}{0.8}
+		\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+			
+			\hline &   ABT & DOW & IBM & AXP & BK & C & CAT & COF & USB & WFC \\ 
+			\hline \multirow{2}{*}{ABT } & 0.7213 &  &  &  &  &  &  &  &  &  \\ 
+			& (0.0627)   &  &  &  &  &  &  &  &  &  \\ 
+			\hline \multirow{2}{*}{DOW } &  & 0.4775 &  &  &  &  &  &  &  &  \\ 
+			&  & (0.0150) &  &  &  &  &  &  &  &  \\
+			\hline \multirow{2}{*}{IBM } &  &  & 0.5150  &  &  &  &  &  &  &  \\ 
+			&  &  & (0.0503) &  &  &  &  &  &  &  \\
+			\hline \multirow{2}{*}{AXP } &  &  &  & 0.6125  &  &  &  &  &  &  \\
+			&  &  &  & (0.0308) &  &  &  &  &  &  \\
+			\hline \multirow{2}{*}{BK }  &  &  &  &  & 0.5311  &  &  &  &  &  \\ 
+			&  &  &  &  & (0.0143) &  &  &  &  &  \\
+			\hline \multirow{2}{*}{C }   &  &  &  &  &  & 0.6585 &  &  &  &  \\
+			&  &  &  &  &  & (0.0011) &  &  &  &  \\ 
+			\hline \multirow{2}{*}{CAT } &  &  &  &  &  &  & 0.4642  &  &  &  \\
+			&  &  &  &  &  &  & (0.0361) &  &  &  \\ 
+			\hline \multirow{2}{*}{COF } &  &  &  &  &  &  &  & 0.6701  &  &  \\
+			&  &  &  &  &  &  &  & (0.0154) &  &  \\ 
+			\hline \multirow{2}{*}{USB } &  &  &  &  &  &  &  &  & 0.7723  &  \\
+			&  &  &  &  &  &  &  &  & (0.0292) &  \\ 
+			\hline \multirow{2}{*}{WFC } &  &  &  &  &  &  &  &  &  & 0.5135  \\
+			&  &  &  &  &  &  &  &  &  & (0.0089) \\
+			
+			\hline 
+		\end{tabular} }
+	\end{table}
+	
+	
+	\begin{table} [!htbp]
+		\caption{Parameter Estimates of the "B" matrix in rotated realized MGARCH model } 
+		\centering
+		\resizebox{\textwidth}{!}{
+			\renewcommand{\arraystretch}{0.8}
+			\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+				
+				\hline &   ABT & DOW & IBM & AXP & BK & C & CAT & COF & USB & WFC \\ 
+				\hline \multirow{2}{*}{ABT } & 0.5835 &  &  &  &  &  &  &  &  &  \\ 
+				& (0.1073)   &  &  &  &  &  &  &  &  &  \\ 
+				\hline \multirow{2}{*}{DOW } &  & 0.8747 &  &  &  &  &  &  &  &  \\ 
+				&  & (0.0049) &  &  &  &  &  &  &  &  \\
+				\hline \multirow{2}{*}{IBM } &  &  & 0.8012  &  &  &  &  &  &  &  \\ 
+				&  &  & (0.0402) &  &  &  &  &  &  &  \\
+				\hline \multirow{2}{*}{AXP } &  &  &  & 0.7454  &  &  &  &  &  &  \\
+				&  &  &  & (0.0271) &  &  &  &  &  &  \\
+				\hline \multirow{2}{*}{BK }  &  &  &  &  & 0.8321  &  &  &  &  &  \\ 
+				&  &  &  &  & (0.0068) &  &  &  &  &  \\
+				\hline \multirow{2}{*}{C }   &  &  &  &  &  & 0.7512 &  &  &  &  \\
+				&  &  &  &  &  & (0.0003) &  &  &  &  \\ 
+				\hline \multirow{2}{*}{CAT } &  &  &  &  &  &  & 0.8547  &  &  &  \\
+				&  &  &  &  &  &  & (0.0199) &  &  &  \\ 
+				\hline \multirow{2}{*}{COF } &  &  &  &  &  &  &  & 0.7172  &  &  \\
+				&  &  &  &  &  &  &  & (0.0141) &  &  \\ 
+				\hline \multirow{2}{*}{USB } &  &  &  &  &  &  &  &  & 0.6006  &  \\
+				&  &  &  &  &  &  &  &  & (0.0453) &  \\ 
+				\hline \multirow{2}{*}{WFC } &  &  &  &  &  &  &  &  &  & 0.8514  \\
+				&  &  &  &  &  &  &  &  &  & (0.0032) \\
+				
+				\hline 
+			\end{tabular} }
+		\end{table}
+		
+
+
+
+\begin{longtable}[!htbp]{|c|c|c|c|c|c|c|}
+	\caption{Estimation of $\Gamma$} \\
+	\hline Position in Coefficient Matrix &\multicolumn{3}{|c|}{First row}&\multicolumn{3}{c|}{Diagonal}  \\ 
+	\hline Model selection criterion 
+	&\textbf{LS} & \textbf{AIC} & \textbf{BIC} & \textbf{LS} & \textbf{AIC} & \textbf{BIC}  \\ 
+	\endhead
+	\hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
+	\endfoot
+	\hline \multirow{55}{*}{ }
+	 &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\cline{2-7}  &  &  &  &  &  &  \\ 
+	\hline  &  &  &  &  &  &  \\ 
+	\hline  &  &  &  &  &  &  \\ 
+	\hline 
+
+\end{longtable} 
+
+
+%\clearpage
+
+%\nocite{Cox:1962}
+%\nocite{Kitamura:2000}
+\newpage
+\renewcommand{\baselinestretch}{1}
+\small
+\normalsize
+
+\bibliography{hall_pell}
+\end{document}

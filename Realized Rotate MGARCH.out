@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Realized Multivariate GARCH model}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Definitions and Notations}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Parameterization}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Covariance targeting}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Calculate the realized kernel}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Estimation and Inference}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Estimation for MGARCH Equation}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Adaptive LASSO}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Definition and Notation}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Selective Criterion}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Covariance of adaptive lasso}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Empirical illustration}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{Data Description}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{Realized Volatility Description}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.3}{Daily Log-Return Description}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.4}{Estimation for realized GARCH model}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.5}{Adaptive lasso under different selective criterion}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.6}{Estimation of Measurement equation}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 20

@@ -1,0 +1,80 @@
+\documentclass[titlepage,11pt]{article}
+\bibliographystyle{oupecon}
+\usepackage[abbr]{harvard}
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-0.65in}
+\addtolength{\textheight}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\renewcommand{\baselinestretch}{1.48}
+\newtheorem{coro}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{exam}{Example}
+\newtheorem{theo}{Theorem}
+\newtheorem{defi}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\newtheorem{prop}{Proposition}
+\usepackage{times}
+%\usepackage[active]{srcltx}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{booktabs}
+%\usepackage{epstopdf}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[h]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\resizebox{0.7\textwidth}{!}{%
+		\begin{tabular}{@{}lrrr@{}}
+			\toprule
+			\begin{tabular}[c]{@{}l@{}}Index in \\ diagonal position\end{tabular} & LS         & AIC        & BIC        \\ \midrule
+			1                                                                     & 0.65(0.05) & 0.72(0.03) & 0.72(0.03) \\
+			11                                                                    & 0.76(0.05) & 0.79(0.03) & 0.80(0.02) \\
+			20                                                                    & 0.88(0.07) & 0.93(0.05) & 1.24(0.03) \\
+			28                                                                    & 0.73(0.09) & 0.76(0.05) & 0.91(0.06) \\
+			35                                                                    & 0.75(0.07) & 0.83(0.03) & 0.75(0.03) \\
+			41                                                                    & 0.96(0.04) & 0.97(0.02) & 0.91(0.03) \\
+			46                                                                    & 0.82(0.07) & 0.87(0.05) & 1.02(0.06) \\
+			50                                                                    & 0.62(0.08) & 0.65(0.04) & 1.00(0.03) \\
+			53                                                                    & 0.69(0.06) & 0.71(0.04) & 0.83(0.02) \\
+			55                                                                    & 0.81(0.09) & 0.87(0.03) & 0.71(0.03) \\
+			\cmidrule(r){2-4}
+			mean                                                                  & 0.766      & 0.810      & 0.889      \\
+			Non-zero pct                                                          & 100\%      & 83.64\%    & 72.73\%    \\
+			Overall Non-zero pct                                                  & 100\%      & 38.68\%    & 13.69\%    \\
+			MSE                                                                   & 0.231      & 0.231      & 0.237      \\ \bottomrule
+		\end{tabular}
+	}
+\end{table}
+
+
+\begin{tabular}{llr}
+	\toprule
+	\multicolumn{2}{c}{Item} \\
+	\cmidrule(r){1-2}
+	Animal    & Description & Price (\$) \\
+	\midrule
+	Gnat      & per gram    & 13.65      \\
+	& each        & 0.01       \\
+	Gnu       & stuffed     & 92.50      \\
+	Emu       & stuffed     & 33.33      \\
+	Armadillo & frozen      & 8.99       \\
+	\bottomrule
+\end{tabular}
+
+
+
+
+
+
+\end{document}
