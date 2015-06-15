@@ -24,6 +24,7 @@
 \newlabel{return}{{1}{1}{Definitions and Notations}{equation.2.1}{}}
 \newlabel{realgarch}{{2}{1}{Definitions and Notations}{equation.2.2}{}}
 \newlabel{measurement}{{3}{1}{Definitions and Notations}{equation.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Pricncipal Matrix Logarithm}{2}{subsubsection.2.1.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Parameterization}{2}{subsection.2.2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}GARCH Equation}{2}{subsubsection.2.2.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Measurement equation}{3}{subsubsection.2.2.2}}
@@ -32,42 +33,48 @@
 \newlabel{targeting1}{{5}{4}{Covariance targeting}{equation.2.5}{}}
 \newlabel{rotate}{{6}{4}{Covariance targeting}{equation.2.6}{}}
 \newlabel{targeting2}{{7}{4}{Covariance targeting}{equation.2.7}{}}
-\newlabel{tilde}{{8}{4}{Covariance targeting}{equation.2.8}{}}
+\newlabel{tilde}{{8}{5}{Covariance targeting}{equation.2.8}{}}
 \newlabel{ass_2}{{1}{5}{Covariance targeting}{assumption.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}The realized kernel}{5}{subsection.2.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Adaptive LASSO}{6}{section.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Adaptive LASSO}{7}{section.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Definition and Notation}{7}{subsection.3.1}}
 \newlabel{alasso_def}{{11}{7}{Definition and Notation}{equation.3.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Selective Criterion}{7}{subsection.3.2}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Adaptive lasso algorithm\relax }}{8}{algocf.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Least angle regression}{8}{subsection.3.2}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces LARS algorithm\relax }}{9}{algocf.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{alasso_alg}{{1}{8}{Definition and Notation}{algocf.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Residual of Sum-of-Squares(RSS) of different estimate\relax }}{8}{table.caption.2}}
-\newlabel{RSS}{{1}{8}{Residual of Sum-of-Squares(RSS) of different estimate\relax }{table.caption.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Estimation and Inference}{9}{section.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Estimation for MGARCH Equation}{9}{subsection.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Estimation of the Multivariate Measurement Equation}{10}{subsection.4.2}}
-\newlabel{lasso-measurement}{{17}{11}{Estimation of the Multivariate Measurement Equation}{equation.4.17}{}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces The Bootstrap algorithm\relax }}{11}{algocf.2}}
-\newlabel{boot_alg}{{2}{11}{Estimation of the Multivariate Measurement Equation}{algocf.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Empirical illustration}{12}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Realized Volatility Description}{12}{subsection.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Daily Log-Return Description}{12}{subsection.5.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Estimation Result for realized GARCH model}{12}{subsection.5.3}}
-\newlabel{vec-GARCH}{{18}{12}{Estimation Result for realized GARCH model}{equation.5.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Adaptive lasso under different selective criterion}{12}{subsection.5.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Lasso shrinkage of coefficient\relax }}{13}{figure.caption.4}}
-\newlabel{fig:lassoshrinkage}{{1}{13}{Lasso shrinkage of coefficient\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Estimation Result of Measurement equation}{13}{subsection.5.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Degree of freedom shrinkage\relax }}{14}{figure.caption.5}}
-\newlabel{fig:degreeoffreedom}{{2}{14}{Degree of freedom shrinkage\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Mean Squared Error of ALASSO\relax }}{14}{figure.caption.6}}
-\newlabel{fig:MSE}{{3}{14}{Mean Squared Error of ALASSO\relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{15}{section.6}}
+\newlabel{lars_alg}{{1}{9}{Least angle regression}{algocf.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Information Criterion}{9}{subsection.3.3}}
+\newlabel{s}{{12}{9}{Information Criterion}{equation.3.12}{}}
+\newlabel{AIC}{{13}{10}{Information Criterion}{equation.3.13}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Residual of Sum-of-Squares(RSS) of measurement equation (\ref  {vec-measurement})\relax }}{10}{table.caption.2}}
+\newlabel{RSS}{{1}{10}{Residual of Sum-of-Squares(RSS) of measurement equation (\ref {vec-measurement})\relax }{table.caption.2}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Using LARS algorithm for adaptive lasso\relax }}{11}{algocf.2}}
+\newlabel{alasso_alg}{{2}{11}{Information Criterion}{algocf.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Estimation and Inference}{11}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Estimation for MGARCH Equation}{11}{subsection.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Estimation of the Multivariate Measurement Equation}{13}{subsection.4.2}}
+\newlabel{measurement1}{{18}{13}{Estimation of the Multivariate Measurement Equation}{equation.4.18}{}}
+\newlabel{lasso-measurement}{{19}{13}{Estimation of the Multivariate Measurement Equation}{equation.4.19}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces The Bootstrap algorithm\relax }}{14}{algocf.3}}
+\newlabel{boot_alg}{{3}{14}{Estimation of the Multivariate Measurement Equation}{algocf.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Empirical illustration}{14}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Realized Volatility Description}{14}{subsection.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Daily Log-Return Description}{14}{subsection.5.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Estimation Result for realized GARCH model}{14}{subsection.5.3}}
+\newlabel{vec-GARCH}{{20}{14}{Estimation Result for realized GARCH model}{equation.5.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Adaptive lasso under different selective criterion}{15}{subsection.5.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Estimation Result of Measurement equation}{15}{subsection.5.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Lasso shrinkage of coefficient\relax }}{16}{figure.caption.5}}
+\newlabel{fig:lassoshrinkage}{{1}{16}{Lasso shrinkage of coefficient\relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Degree of freedom shrinkage\relax }}{16}{figure.caption.6}}
+\newlabel{fig:degreeoffreedom}{{2}{16}{Degree of freedom shrinkage\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Mean Squared Error of ALASSO\relax }}{17}{figure.caption.7}}
+\newlabel{fig:MSE}{{3}{17}{Mean Squared Error of ALASSO\relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{18}{section.6}}
 \bibdata{hall_pell}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Estimation of coefficient $\Gamma $\relax }}{16}{table.caption.7}}
-\newlabel{lassotable}{{2}{16}{Estimation of coefficient $\Gamma $\relax }{table.caption.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Parameter Estimates of the "A" matrix in rotated realized MGARCH model \relax }}{17}{table.caption.9}}
-\newlabel{A}{{3}{17}{Parameter Estimates of the "A" matrix in rotated realized MGARCH model \relax }{table.caption.9}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Parameter Estimates of the "B" matrix in rotated realized MGARCH model \relax }}{18}{table.caption.10}}
-\newlabel{B}{{4}{18}{Parameter Estimates of the "B" matrix in rotated realized MGARCH model \relax }{table.caption.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Estimation of coefficient $\Gamma $\relax }}{19}{table.caption.8}}
+\newlabel{lassotable}{{2}{19}{Estimation of coefficient $\Gamma $\relax }{table.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Parameter Estimates of the "A" matrix in rotated realized MGARCH model \relax }}{20}{table.caption.10}}
+\newlabel{A}{{3}{20}{Parameter Estimates of the "A" matrix in rotated realized MGARCH model \relax }{table.caption.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Parameter Estimates of the "B" matrix in rotated realized MGARCH model \relax }}{21}{table.caption.11}}
+\newlabel{B}{{4}{21}{Parameter Estimates of the "B" matrix in rotated realized MGARCH model \relax }{table.caption.11}{}}

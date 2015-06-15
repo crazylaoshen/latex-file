@@ -24,6 +24,8 @@
 \usepackage{caption}
 \usepackage{multirow}
 \usepackage{booktabs}
+\newcommand{\expm}{\operatorname{expm}}
+\newcommand{\logm}{\operatorname{logm}}
 %\usepackage{epstopdf}
 
 \begin{document}
@@ -66,17 +68,24 @@ We could specify a particular BEKK-type system as follows:
 where conditional covariance follows a GARCH(1,1) process
 \begin{equation}
 	\label{realgarch}
-	 H_t=CC'+ B\,  H_{t-1} \,B+A \,  X_{t-1} \, A
+	 H_t=CC'+ B\,  H_{t-1} \,B'+A \,  X_{t-1} \, A'
 \end{equation}
-and X can be updated by the contemporaneous H in a logarithm way as follow 
+and X can be updated by the contemporaneous H in a logarithm way with a linear function $f(.)$ as follow 
 \begin{equation}
 	\label{measurement}
-	 \log X_t= D+ \Gamma \log H_t \Gamma + U_t
+	 \logm X_t=f(\logm H_t)
 \end{equation}
 
 We refer to first two equation as the return equation and the Realized GARCH equation. Since the realized measure $X_t$ could be interpreted as a measurement of conditional covariance $H_t$, the last equation is referred as the measurement equation.
-  In (\ref{return}), $\xi_t = z_t z_t'$ is $k \times k$ symmetric innovation matrix which is outer product of innovation vector $z_t$,satisfying $E_{t-1}[\xi_t]=I_k$, where $I_k$ is an identity matrix. 
-In (\ref{realgarch}), we define the symmetric square root of a positive semidefinite matrix H, denoted by $H^{1/2}$, using the spectral decomposition such that $H^{1/2} = U \Lambda^{1/2} U$ where U is a matrix containing the eigenvectors of H, and $\Lambda^{1/2}$ is a diagonal matrix containing the square root of the eigenvalues of H. In (\ref{measurement}), We use $\log$ before matrix to represent the principal matrix logarithm. For most matrices,$\log (\exp(A)) = A =\exp(\log(A))$. We assume $U_t$ is a symmetric innovation matrix where $U_t \overset{i.i.d} {\sim} \mathcal{N}_k(0,\Sigma)$, which $\Sigma$ is a $k \times k$ positive definite matrix. The reason logarithm is used in measurement equation is to accommodate the possible negative definite of $U_t$ and positive definite of $X_t$ and $H_t$.
+  In (\ref{return}), $\xi_t = Z_t Z_t'$ is $k \times k$ symmetric innovation matrix which is outer product of innovation vector $Z_t$,satisfying $E_{t-1}[\xi_t]=I_k$, where $I_k$ is an identity matrix. 
+In (\ref{realgarch}), we define the symmetric square root of a positive semidefinite matrix H, denoted by $H^{1/2}$, using the spectral decomposition such that $H^{1/2} = U \Lambda^{1/2} U$ where U is a matrix containing the eigenvectors of H, and $\Lambda^{1/2}$ is a diagonal matrix containing the square root of the eigenvalues of H. 
+\subsubsection{Pricncipal Matrix Logarithm}
+In (\ref{measurement}), We use $\logm$ before matrix to represent the principal matrix logarithm. Let $M$ is a $k \times k$ positive definite matrix. $N = \logm(M)$ denotes unique $k \times k$ matrix such that $\expm(N) = M$ and  every eigenvalue of $N$ has imaginary part lying strictly between ${-\pi}$ and $\pi$. So logarithm of a matrix is a generalization of the scalar logarithm and in some sense an inverse function of the matrix exponential. The exponential of N is the given by the power series
+\begin{equation*}
+\expm(N) = \sum_{i=0}^{\infty} \frac{N^i}{i!}
+\end{equation*}
+The above series always converges, so the exponential of matrix is well-defined. We calculate logarithm of matrix with a routine matrix function in matlab $logm$.
+ 
 
 
 
@@ -132,13 +141,13 @@ a_{11} & 0 \\
 Note that the BEKK model could be easily written in vectorized model, we write the measurement equation into:
 \begin{equation}
 \label{vec-measurement}
-\log x_t= d+ \bar{\Gamma} \,  \log h_{t}+ u_{t}
+x_t= d+ \Gamma \, h_{t}+ u_{t}
 \end{equation}
-We define $x_t = vech( X_t)$ and similarly $h_t = vech( H_t)$, $d = vech(D)$ where the vech operator stacks the lower triangular part including the main diagonal of a $(k \otimes k)$ symmetric matrix into a $(k^* \times 1)$  vector, where $k^*= k(k+1)/2$. Moreover, $\bar{\Gamma} = L_k(\Gamma\otimes \Gamma)D_k$ , where the elimination ($L_k$) and duplication($D_k$) matrices are linear operational matrices of zeros and ones which could be found in some matrix algebra textbook, like Magnus and Neudecker (1999).  So the parameters in (\ref{vec-measurement}) are just linear transformation and uniquely identifed from the equation (\ref{measurement}) and vice versa. 
-Hence, $x_t$, d, $h_t$ and $u_t$ are all  $k^* \times 1$ vectors .  The coefficient matrix $\Gamma$ is a $k^* \times k^*$ matrix.  This matrix characterize the correlation between realized measure and all the elements of conditional covariance matrix. This vectorized form is easy to estimate since it's similar structure as the seemingly unrelated regression. Although the equation (\ref{measurement})  has $O(k^4)$ parameters, it is an easy task by using computer. The problem of high dimensionality is not about  burden of computation but the prediction variation produced by too many parameters. We could use shrinkage and variable selection method in the estimation to reduce elements in coefficient matrix $\bar{\Gamma}$.
+We define $x_t = vech(\log X_t)$ and similarly $h_t = vech(\log H_t)$ where the vech operator stacks the lower triangular part including the main diagonal of a $(k \otimes k)$ symmetric matrix into a $(k^* \times 1)$  vector, where $k^*= k(k+1)/2$. Moreover, $\bar{\Gamma} = L_k(\Gamma\otimes \Gamma)D_k$ , where the elimination ($L_k$) and duplication($D_k$) matrices are linear operational matrices of zeros and ones which could be found in some matrix algebra textbook, like Magnus and Neudecker (1999). 
+Hence, $x_t$, $d$, $h_t$ and $u_t$ are all  $k^* \times 1$ vectors, which $d$ is the intercept vector and $u_t$ is the innovation vector with mean zero normal distribution.  The coefficient matrix $\Gamma$ is a $k^* \times k^*$ matrix.  This matrix characterize the correlation between realized measure and all the elements of conditional covariance matrix. This vectorized form is easy to estimate since it's similar structure as the seemingly unrelated regression. Although the equation (\ref{vec-measurement})  has $O(k^4)$ parameters, it is an easy task by using computer. The problem of high dimensionality is not about  burden of computation but the prediction variation produced by too many parameters. We could use shrinkage and variable selection method in the estimation to reduce elements in coefficient matrix $\bar{\Gamma}$.
 
 
-For deomonstration, we extend the previous example by writting out (\ref{measurement}) of 2 by 2 case in vech form 
+For deomonstration, we extend the previous example by writting out (\ref{vec-measurement}) of 2 by 2 case in vech form 
 
 \begin{equation*}
 \left(\begin{array}{c}
@@ -173,7 +182,7 @@ We could tell from this example that in the measurement equation that each eleme
 
 
 \subsection{Covariance targeting}
-The covariance targeting parameterization was introduced in Engle and Mezrich (1996) for the univariate GARCH model. The usefulness of covariance targeting in large models is that it allows for 2-step estimation which estimate the unconditional moments with empirical moments to reduce the number of parameters to be estimated.
+The covariance targeting parameterization was introduced in Engle and Mezrich (1996) for the univariate GARCH model. The usefulness of covariance targeting in large models is that it allows for 2-step estimation which estimate the unconditional moments with empirical moments. It will substantially reduce the number of parameters to be estimated through the non-linear optimization.
 Since unconditional covariance of daily return and realized return are $Var[r_t]=E[H_t]=P$ and $E[X_t]=M$. In \ref{realgarch}, the covariance-targeting for $H_t$:
 \begin{equation}
 \label{targeting1}
@@ -256,57 +265,116 @@ We define adaptive lasso(alasso) estimates $\beta^{alasso}$ are given by
 
 \begin{equation}
 \label{alasso_def}
-\beta^{alasso}=arg\,min_{\beta} \left\| y-\sum^p_{j=1}x_j\beta_j \right\| ^2 + \lambda_n\sum^p_{j=1}\hat{w}_j|\beta_j|
+\beta^{alasso}=arg\,min_{\beta} \left\| y-\sum^p_{j=1}x_j\beta_j \right\| ^2 + \lambda\sum^p_{j=1}\hat{w}_j|\beta_j|
 \end{equation}
-$\hat{w}_j$  is a vector of weights, with $\hat{w}_j = 1/\|\hat{\beta}\|$ , where $\beta$ is the unpenalized OLS estimator. Note equation (\ref{alasso_def}) is a convex optimization problem, and thus it does not suffer from the multiple  local minimal issue, and its global minimizer can be easily found after the alasso solution path being efficiently computed by the LARS algorithm (Efron et al., 2004), which only require computational effort of one single OLS fit. 
+$\hat{w}_j$  is a vector of weights, with $\hat{w}_j = 1/\|\hat{\beta}\|$ , where $\hat{\beta}$ is the unpenalized OLS estimator. Note equation (\ref{alasso_def}) is a convex optimization problem, and thus it does not suffer from the multiple  local minimal issue, and its global minimizer can be easily found after the alasso solution path being efficiently computed by the LARS algorithm (Efron et al., 2004), which only require computational effort of one single OLS fit. 
 
-Based on a simpler LARS algorithm proposed by  Rosset and Zhu( 2007), the computation details  of alasso estimator are presented below:
+\subsection{Least angle regression}
+There are several algorithm to compute the solution of shrinkage linear regression problem, such as quadratic programming approach in the original lasso paper by Tibshirani (1996), least angle regression(LARS) by Efron(2004) and so on. They provide pretty much similar results and by minor modification could generate identical solutions. We follow the routine proposed by Zou(2006) to use LARS algorithm to do the computation.
+In LARS, we chose the step length in each step such that any inactive variable becomes equally important as the active variable in terms of correlation with the residual vector. That variable is then assigned to the active set and a new direction is calculated. Specifically, the algorithm starts with the empty set of active variables which is just a trivial constant model and move towards the full OLS regression. The correlation between each variable and the response is measured, and the variable with the highest correlation becomes the first to include into the model. The first direction is then towards the least squares solution using this single active variable. The angles between the variables and the residual vector shrink along this direction until another variable obtains the same correlation with the residual vector as the active variable. Then the new variable moves to the active set and the new direction is towards the least squares solution of the two active variables, and so on. After p steps, the full OLS solution will be reached.
+The LARS algorithm is efficient since there is a closed form solution for the step length at each
+stage. Denoting the model estimate of y at iteration k by $\hat{y}^{(k)}$ and the least squares solution
+including the newly added active variable $\hat{y}^{(k+1)}_{OLS}$, the walk from $\hat{y}^{(k)}$ towards $\hat{y}^{(k+1)}_{OLS}$ can be formulated $ (1-\gamma)\hat{y}^{(k)} + \gamma\hat{y}^{(k+1)}_{OLS}$ where $0 \leq \gamma \leq 1$. Estimating $\hat{y}^{(k+1)}_{OLS}$, the position where the next active variable is to be added, then amounts to estimating. We seek the smallest positive $\gamma$ where correlations become equal, that is
+\begin{equation*}
+x_{i\in \mathcal{I}}'(y-(1-\gamma)\hat{y}^{(k)} - \gamma \hat{y}^{(k+1)}_{OLS}) = x_{j \in \mathcal{A}}'(y-(1-\gamma)\hat{y}^{(k)} - \gamma \hat{y}^{(k+1)}_{OLS})
+\end{equation*}
+where $\mathcal{I}$ and $\mathcal{A}$ represent inactive set and active set of variable respectively.
+Solving this expression for $\gamma$ , we get
 
+\begin{equation*}
+\gamma_{i\in \mathcal{I}}= \frac{(x_i-x_j)'(y-\hat{y}_{(k)})}{(x_i-x_j)'(\hat{y}^{(k+1)}_{OLS}-\hat{y}_{(k)})} = \frac{(x_i-x_j)'\epsilon}{(x_i-x_j)'\mathbf{d}}
+\end{equation*}
+where $\epsilon$is residual and $\mathbf{d}= \hat{y}^{(k+1)}_{OLS} -\hat{y}_{(k)}$ is the direction of the step, and $j\in \mathcal{A}$. Now, $\mathbf{d}$ is the orthogonal projection of $\epsilon$ onto the plane spanned by the variables in $\mathcal{A}$, therefore we have $x_j'\epsilon = x_j' \mathbb{d} \equiv c$, representing the angle at the current breakpoint $\hat{y}_{(k)}$. Furthermore, the sign of the correlation
+between variables is irrelevant. Therefore, we have
+\begin{equation*}
+\gamma = \min_{i\in \mathbf{I}}\left(\frac{x_i' \epsilon -c}{x_i' \mathbf{d} -c}, \quad \frac{x_i' \epsilon + c}{x_i' \mathbf{d} + c}  \right)
+, \quad 1\leq \gamma \leq 1
+\end{equation*}
+where the two terms are for correlations/angles of equal and opposite sign respectively. The coefficients at this next step are given by
+\begin{equation*}
+ \beta^{(k+1)} = (1-\gamma)\beta^{(k)} + \gamma\beta^{(k+1)}_{OLS}
+\end{equation*}
+
+Given these key pieces of the LAR algorithm, we state the entire procedure in Algorithm \ref{lars_alg}.
 
 \begin{algorithm}[!htbp]
-	create new covariates ,$X_j^* = X_j/\hat{w}_j, j = 1,2,...,q $. where is the adaptive weight as defined above. Note both $X_j, Z_j*$ are of dimension nX1, for each j.\\
-	Solve lasso problem defined above in (\ref{alasso_def}) via LARS algorithm for given $\lambda$ , which corresponding to a ‘step’ in the algorithm, each step add one variable.\\
-	Then we substitute lasso estimator $\tilde{\beta}(\lambda)$ from step 2  in criterion equation below. This provides us a BIC value for each step.\\
-	Repeat steps 2-3 for each remaining  and record each $BIC_\lambda$ for given$\tilde{\beta}(\lambda)$ \\
-	Choose the pair of $\tilde{\beta}(\lambda)$ , which minimized BIC over $\lambda$\\
-	Output is ,$\hat{\beta}_j = \tilde{\beta}_j/\hat{w}_j, j = 1,2,...,q $. This is the adaptive lasso estimate.
-	\caption{Adaptive lasso algorithm}
-	\label{alasso_alg}
+	Initialize the coefficient vector $\beta^{(0)}=0$  and the fitted vector $\hat{y}^{(0)}=0$,\\
+	Initialize the active set $\mathcal{A}=\emptyset$ and the inactive set $\mathcal{I}={1...p}$\\
+	for $k=0$ to $p-2$ do\\
+	Update the residual $\epsilon = y-\hat{y}^{(k)}$\\
+	Find the maximal correlation $c = max_{i\in \mathcal{I}}|x_i'\epsilon|$\\
+	Move variable corresponding to $c$ from $\mathcal{I}$ to $\mathcal{A}$\\
+	Calculate the least squares solution $\beta^{(k+1)}_{OLS}= (X_\mathcal{A}'X_\mathcal{A})^{(-1)}X_\mathcal{A}'y$\\
+	Calculate the current direction $\mathcal{d}=X_\mathcal{A}\beta^{(k+1)}_{OLS}-\hat{y}_{(k)}$
+	Calculate the step length $\gamma = \min^{+}_{i\in \mathbf{I}}\left(\frac{x_i' \epsilon -c}{x_i' \mathbf{d} -c}, \: \frac{x_i' \epsilon + c}{x_i' \mathbf{d} + c}  \right),  \: 1\leq \gamma \leq 1$\\
+	Update regression coefficients $\beta^{(k+1)} = (1-\gamma)\beta^{(k)} + \gamma\beta^{(k+1)}_{OLS}$\\
+	Update the fitted vector $\hat{y}_{(k+1)} = \hat{y}_{(k)} + \gamma \mathbf{d}$\\
+	end \\
+	Let $\beta^{(p)}$ bet the full least squares solution $\beta^{(p)} = (X'X)^{(-1)}X'y$\\
+	Output the series of along the path $B = [\beta^{(0)}...\beta^{(p)}]$	
+	\caption{LARS algorithm}
+	\label{lars_alg}
 \end{algorithm}
 
 
-\subsection{Selective Criterion}
 
-In the alasso algorithm, we have to choose a criterion to reduce the number of variables. The question of how to find a criterion involves the trade-off between bias and variance, along with the subjective desire for parsimony. 
+\subsection{Information Criterion}
 
-The intention of using measurement equation is to update realized volatility measure beyond one step to make multiple-period prediction. Thus the accuracy of prediction is our main concern. 
-We can not use RSS on the training data to determine these parameters, since we would always pick those that fit most parameters and hence gave smallest residuals. Such models are unlikely to predict future data well due to larger variance. The fully parameterized OLS estimate is derived from taking least squares, hence its RSS is smallest(see table1). 
-\begin{table} [!htbp]
+Each step of Algorithm \ref{lars_alg} adds a covariate to the model until the full least squares solution is reached. It is natural to parameterize this process by the size of the coefficients at each step of the algorithm. Here we define $s$ as a standardized version of parameter size.
 
-
-\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-	  
-	\hline OLS  & Shrinkage Based AIC  & Shrinkage Based BIC \\ 
-	\hline 348.53  & 357.39 & 365.62 \\ 
-	\hline 
-\end{tabular} 
-\captionsetup{justification=raggedright,singlelinecheck=false}
-\caption{ Residual of Sum-of-Squares(RSS) of different estimate}
-\label{RSS}
-\end{table}
+\begin{equation}
+\label{s}
+s(\beta)=\sum_{i=1}^{p}|\hat{\beta_i}|/\sum_{i=1}^{p}|\hat{\beta_i}^{ols}|, s\in [0,1]
+\end{equation}
+Note that $s$ has a one-to-one relationship with the regulation parameter $\lambda$. Picking a suitable model for a particular analysis thus means selecting a suitable value of $s$. The question of how to choose a suitable $s$ involves the trade-off between bias and variance, along with the subjective desire for parsimony. 
 
 
-We proceed with 2 popular model selection criteria-Akaike information criterion (AIC) and  Bayesian information criterion (BIC) for LASSO proposed by Zou(2006). 
-\begin{align}
+ Specifically, we pick up the optimal model to minimize the information criteria. The 2 popular criterion are Akaike information criterion (AIC) and  Bayesian information criterion (BIC) for LASSO proposed by Zou(2006). 
+ \begin{equation}
+\label{AIC}
+\begin{aligned}
 & AIC^{(p)} = \left \| y-X\beta^ {(p)} \right \|^2 + 2\sigma_\epsilon ^2 df^{(p)}  \\
 & BIC^{(p)} = \left \| y-X\beta^ {(p)} \right \|^2 + \log(n) \sigma_\epsilon ^2 df^{(p)}
-\end{align}
+\end{aligned}
+\end{equation}
+where $df^{(k)}$ represents the number of degrees of freedom at each step of the LARS algorithm and approximately equals to the number of non-zero elements of parameters vector $\beta$, the LARS algorithm returns the sequence $df_{LAR}^{k}=|\mathcal{A}|=k, k=1,...,p$. The measure $\sigma_\epsilon^2$ represents the residual variance of OLS model, $\sigma_\epsilon^2=\frac{1}{n-k}||Y-X'\beta^{ols}||^2$ .
 
-Which Efron et al. (2004) showed that the number of degrees of freedom at each step of the LAR algorithm is well approximated by the number of non-zero elements of parameters $\beta$, $df_{LAR}^{p}=p, p=1,...,k^*$. The measure $\sigma_\epsilon^2$ represents the residual variance of OLS model, $\sigma_\epsilon^2=\frac{1}{n-k}||Y-X'\beta^{ols}||^2$ .
 
-These two criterion has different asymptotic optimality. It is well known that AIC tends to select the model with the optimal prediction performance, while BIC tends to identify the true sparse model if the true model is in the candidate list (Hastie,and Tibshirani  2007). The L1 norm restriction parameter λ controls the penalty level and therefore the model complexity. Since LARS algorithm solves the LASSO solution for all λ. With the entire LASSO solution path computed by LARS algorithm, we can immediately select the optimal model by identify the smallest value of selected criterion and the corresponding λ.  
 
-In LASSO algorithm, an alternate tuning parameter to $\lambda$is  t. which is recognized as the absolute bound of estimated parameters $t =\sum \hat{\beta_i}^{alasso}$. It posses the one-to-one relationship with $\lambda$.  Here we define s as a standardized version parameter,as the relative bound $s =\sum\hat{\beta_i}^{alasso}/\sum \hat{\beta_i}^{ols}, s\in [0,1]$. The relative bound can be seen as a standardized version of lasso parameter. 
+
+
+These two criterion has different asymptotic property. It is well known that AIC tends to select the model with the optimal prediction performance, while BIC tends to identify the true sparse model if the true model is in the candidate list (Hastie,and Tibshirani  2007). The intention of using measurement equation is to update realized volatility measure beyond one step to make multiple-period prediction. The accuracy of prediction with measurement equation is our main concern. Thus, AIC would be the better choice for forecast. With the entire LASSO solution path computed by LARS algorithm, we can immediately select the optimal model by identify the smallest value of AIC and the corresponding $s(\beta)$.  
+From another perspective, We can not use RSS on the training data to determine these parameters, since we would always pick those that fit most parameters and hence gave smallest residuals. Such models are unlikely to predict future data well due to larger variance. The fully parameterized OLS estimate is derived from taking least squares, hence the RSS of linear regression with OLS fit is smallest, we demonstrate such point with the different fit of measurement equation (see table \ref{RSS}). 
+\begin{table} [!htbp]
+	
+	
+	\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+		
+		\hline OLS  & Shrinkage Based AIC  & Shrinkage Based BIC \\ 
+		\hline 348.53  & 357.39 & 365.62 \\ 
+		\hline 
+	\end{tabular} 
+	\captionsetup{justification=raggedright,singlelinecheck=false}
+	\caption{ Residual of Sum-of-Squares(RSS) of measurement equation (\ref{vec-measurement})}
+	\label{RSS}
+\end{table}
+
+With all the pieces together, we could solve the adaptive lasso problem defined in (\ref{alasso_def}) for $\hat{\beta}_j$ in , the computation details are given following in Algorithm \ref{alasso_alg}:
+
+
+\begin{algorithm}[!htbp]
+	Define new covariates ,$x_j^* = x_j/\hat{w}_j, j = 1,2,...,p $. where $\hat{w}_j$ is the adaptive weight as defined above.\\
+	Solve lasso problem with LARS algorithm  ,
+	\begin{equation*}
+		\beta^{alasso}=arg\,min_{\beta} \left\| y-\sum^p_{j=1}x_j^*\beta_j \right\| ^2 + \lambda\sum^p_{j=1}|\beta_j|
+	\end{equation*}
+	which generate a sequence of solutions $B = [\beta^{(0)}...\beta^{(p)}]$\\
+	Then we substitute lasso estimators from step 2  into the information criterion equation (\ref{AIC}). This provides us a selection criteria value for each step.\\
+	Pick up the  $\tilde{\beta}$  which minimizes AIC(BIC) \\
+	Output $\hat{\beta}_j = \tilde{\beta}_j/\hat{w}_j, j = 1,2,...,p $. This is the adaptive lasso estimate.
+	\caption{Using LARS algorithm for adaptive lasso}
+	\label{alasso_alg}
+\end{algorithm}
 
 
 
@@ -317,7 +385,7 @@ In LASSO algorithm, an alternate tuning parameter to $\lambda$is  t. which is re
 In this section we discuss the asymptotic properties of the quasi-maximum likelihood estimator within the realized MGARCH model given by (\ref{return}) and (\ref{realgarch}). We could estimate the parameters in rotated model, then reverse the linear transformation to retract the unrotated measure.
 In traditional GARCH MODELS, the vector of daily returns is usually modeled as $R_t=H_t^{1/2} z_t$, with $z_t \overset{i.i.d} {\sim} \mathcal{N}(0,I_k)$, which motivates quasi-maximum likelihood estimation (QMLE).In our model, since $\xi_t = z_t z_t'$, the assumption that $z_t \overset{i.i.d} {\sim} \mathcal{N}(0,I_k)$ implies that $\xi$ follows a Wishart distribution. The choice of Wishart distribution is suitable for the model where the support of the random variable of interest is confined to the space of positive semidefinite matrices. 
 
-The Realized MGARCH equation is parameterized with a finite-dimensional $(\delta \times 1)$ parameter vector $\theta\in \Theta\subset \mathbb{R}^\delta $. Decompose $\theta = (\theta_s',\theta_d')'$ , where $theta_s =(p', m')' $  denote the model's unconditional moment, and let $\theta_d$ denote the vector of dynamic parameters indexing $\tilde{A}$ and $\tilde{B}$ in (\ref{tilde}). We denote the true parameter vector with $\theta_0$. 
+The Realized MGARCH equation is parameterized with a finite-dimensional $(\delta \times 1)$ parameter vector $\theta\in \Theta\subset \mathbb{R}^\delta $. Decompose $\theta = (\theta_s',\theta_d')'$ , where $\theta_s =(p', m')' $  denote the model's unconditional moment, and let $\theta_d$ denote the vector of dynamic parameters indexing $\tilde{A}$ and $\tilde{B}$ in (\ref{tilde}). We denote the true parameter vector with $\theta_0$. 
 The parameters are estimated in 2 steps. The static parameters are to be estimated by a moment estimator
 \begin{align*}
 p' = vech (P) , \qquad m' = vech(M)\\   
@@ -325,7 +393,7 @@ where \\
 \hat{P} = T^{-1} \sum_{t=1}^{T} r_t r_t' , \qquad 
 \hat{M} = T^{-1} \sum_{t=1}^{T} X_t
 \end{align*}
-This estimate is then decomposed into $P^{1/2}$ and $M^{1/2}$. Then we construct the time series of rotated returns and realized kernel $\hat{z_t} = \hat{P}^{-1/2}r_t,\hat{\tilde{X}_t} = \hat{M}^{-1/2}X_t\hat{M}^{-1/2} t=1,2,...,T$. Then $\theta_d$ will be estimated by QMLE in the second step. The asymptotics of the QML estimator in this 2-step procedure is a direct application of two-step GMM estimation discussed in Newey and McFadden (1994).
+This estimate is then decomposed into $P^{1/2}$ and $M^{1/2}$. Then we construct the time series of rotated returns and realized kernel $\hat{z_t} = \hat{P}^{-1/2}r_t,\hat{\tilde{X_t}} = \hat{M}^{-1/2}X_t\hat{M}^{-1/2} t=1,2,...,T$. Then $\theta_d$ will be estimated by QMLE in the second step. The asymptotics of the QML estimator in this 2-step procedure is a direct application of two-step GMM estimation discussed in Newey and McFadden (1994).
 
 The log-likelihood for the $t^{th}$  observation will be denoted by $l_{t}(\theta)$ . Inference for the Realized MGARCH equation will be based on QMLE of the following log-likelihood function of Wishart density which is similar with HEAVY model in Noureldin, etc (2011).
 \begin{equation}
@@ -335,20 +403,36 @@ where $C$ is a constant with respect to $\theta$
 We assume the initial values $H_0$ is known and is positive semidefinite. 
 The QML estimator is $\hat{\theta}_d$, where 
 \[\hat{\theta}_d = arg\,max_{\theta_d \in \Theta} L_{t}(\theta_d;\theta_s)=arg\,max_{\theta_d \in \Theta} \sum_{t=1}^{T} l_{t}(\theta_d;\theta_s)\]
-To compute the asymptotic standard errors, we construct a group of conditions of moment for each $t^th$ observation,$g_t=(g_{p,t},g_{m,t},g_{theta_d,t})$, where $g_{p,t} = p-vech(r_t r_t')$, $g_{m,t} = p-vech(X_t)$ and $g_{\theta_d,t} =\frac{\partial \log L_{t}(\theta_s,\theta_d)}{\partial \theta_d}) $. In the true parameter values, $E[g_t|\mathcal{F}_{t-1}]=0$. Under standard regularity conditions, as $T \rightarrow \infty $ we have
+To compute the asymptotic standard errors, we construct a group of conditions of moment for each $t^{th}$ observation,$g_t=(g_{p,t}',g_{m,t}',g_{\theta_d,t}')$, where $g_{p,t} = p-vech(r_t r_t')$, $g_{m,t} = m-vech(X_t)$ and $g_{\theta_d,t} =\frac{\partial \log L_{t}(\theta_s,\theta_d)}{\partial \theta_d'}) $. In the true parameter values, $E[g_t|\mathcal{F}_{t-1}]=0$. Under standard regularity conditions, as $T \rightarrow \infty $ we have
 \begin{align}
-\sqrt{T} (\hat{\theta}-\theta_0) \overset{d}{\rightarrow} \mathbb{N} (0, \mathcal{I}^{-1} \mathcal{J} \mathcal{I}^{-1})\\
+\sqrt{T} (\hat{\theta}-\theta_0) \overset{d}{\rightarrow} \mathbb{N} (0, \mathcal{I}^{-1} \mathcal{J} (\mathcal{I}^{-1}))'\\
 where \; \hat{\theta}= (\hat{\theta_s'}, \hat{\theta_d'}), and \nonumber \\
-\mathcal{J}=Var \left[\frac{1}{\sqrt{T}} \sum_{t=1}^{T}g_t\right], \mathcal{I}=E \left[\frac{\partial g_t}{\partial \theta}\right]
+\mathcal{J}=Var \left[\frac{1}{\sqrt{T}} \sum_{t=1}^{T}g_t\right], \\
+\mathcal{I}=E \left[\frac{\partial g_t}{\partial \theta}\right]=
+\begin{bmatrix} \frac{\partial g_{p,t}}{\partial p} & 0 & \frac{\partial g_{\theta_d,t}}{\partial p} \\ 0 & \frac{\partial g_{m,t}}{\partial m} & \frac{\partial g_{\theta_d,t}}{\partial m} \\ 0 & 0 & \frac{\partial g_{\theta_d,t}}{\partial \theta}\end{bmatrix} =
+\begin{bmatrix} I_{k^*} & 0 & \frac{\partial^2 \log L_{t}(\theta_s,\theta_d')}{\partial  p \partial\theta_d'}) \\ 0 & I_{k^*} & \frac{\partial^2 \log L_{t}(\theta_s,\theta_d')}{\partial  m \partial\theta_d'}) \\ 0 & 0 & \frac{\partial^2 \log L_{t}(\theta_s,\theta_d')}{\partial \theta_d  \partial \theta_d'})\end{bmatrix} 
 \end{align} 
 
 \subsection{Estimation of the Multivariate Measurement Equation}
-Since the measurement equation is over-parameterized. We will use alasso method to estimate and shrink the parameters in measurement equation. The estimation method used in the lasso require to first normalize each predictor $H_j$ by  substracting the mean and scaling so that $\sum_{i=1}^{k}h_{i,j}^2 = k$, where k is the number of the predictors. So the (\ref{vec-measurement}) could be written in the normalized form:
+Since the measurement equation is over-parameterized. We will use alasso method to estimate and shrink the parameters in measurement equation. As we mentioned before, the measurement equation is actually a system of equations estimated similarly as using SUR method.  To be concrete, we write (\ref{vec-measurement}) as the system of equations.
+
+\begin{equation}
+\label{measurement1}
+\left[ \begin{array}{c} X_1 \\\vdots \\ X_{k^*} \end{array} \right]  =
+\left[ \begin{array}{c} d_1 \\\vdots \\ d_{k^*} \end{array} \right] +
+H \left[ \begin{array}{c} \tilde{\Gamma}_1 \\\vdots \\ \tilde{\Gamma}_{k^*} \end{array} \right] + \left[ \begin{array}{c} u_1 \\\vdots \\ u_{k^*} \end{array} \right]
+\end{equation}
+which $X_1$ is a $T \times 1$ vector, $d_1$ is a scalar, $H$ is a $T \times k^*$ matrix, the $k^* \times 1$ coefficient vector $\tilde{\Gamma}_1$ is the transpose of the first row of coefficient matrix $\tilde{\Gamma}$ in (\ref{lasso-measurement}) .
+So we have $k^*$ equations which share the same predictor matrix $H$. Then we apply lasso method in each equation to get corresponding rows in coefficient matrix $\bar{\Gamma}$.
+
+
+
+Note that the estimation method used in the lasso requires to first normalize each predictor $\bar{\Gamma}$ by subtracting the mean and scaling so that $\sum_{i=1}^{k}\|h_{i,j}\| = 1$. So the (\ref{vec-measurement}) could be estimated in the normalized form:
 \begin{equation}
 \label{lasso-measurement}
- \tilde{\log x}_t=  \bar{\Gamma} \,  \tilde{\log h}_{t}+ u_{t}
+ \tilde{ x}_t=  \tilde{\Gamma} \,  \tilde{ h}_{t}+ u_{t}
 \end{equation}
-where $\tilde{\log x}$ is centered and $\tilde{\log h}$ is centered and normalized such that each variable has zero mean and unit Euclidean length.
+where $x_t$ is centered and $\tilde{ h}$ is centered and normalized such that each variable has zero mean and unit Euclidean length. $\tilde{\Gamma}=\Gamma e$, which $e$ is a $k^* \times k^*$ matrix with same rows and each element in row represent the Euclidean length of each column in $H$. The intercept in (\ref{vec-measurement}) could be calculated as  $d = \bar{x_t}-\Gamma \bar{h_t}$.
 
 The formula for variance of ALASSO is very complicated as showed in Zou(2006). 
 \begin{equation*}

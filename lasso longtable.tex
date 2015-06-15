@@ -1,5 +1,5 @@
-\documentclass[titlepage,11pt]{article}
-\bibliographystyle{oupecon}
+\documentclass[]{letter}
+\usepackage{hyperref}
 \usepackage[abbr]{harvard}
 \addtolength{\textwidth}{1.3in}
 \addtolength{\oddsidemargin}{-0.65in}
@@ -26,55 +26,36 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 %\usepackage{epstopdf}
+\begin{document}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-% \usepackage{graphicx}
-\begin{table}[h]
-	\centering
-	\caption{My caption}
-	\label{my-label}
-	\resizebox{0.7\textwidth}{!}{%
-		\begin{tabular}{@{}lrrr@{}}
-			\toprule
-			\begin{tabular}[c]{@{}l@{}}Index in \\ diagonal position\end{tabular} & LS         & AIC        & BIC        \\ \midrule
-			1                                                                     & 0.65(0.05) & 0.72(0.03) & 0.72(0.03) \\
-			11                                                                    & 0.76(0.05) & 0.79(0.03) & 0.80(0.02) \\
-			20                                                                    & 0.88(0.07) & 0.93(0.05) & 1.24(0.03) \\
-			28                                                                    & 0.73(0.09) & 0.76(0.05) & 0.91(0.06) \\
-			35                                                                    & 0.75(0.07) & 0.83(0.03) & 0.75(0.03) \\
-			41                                                                    & 0.96(0.04) & 0.97(0.02) & 0.91(0.03) \\
-			46                                                                    & 0.82(0.07) & 0.87(0.05) & 1.02(0.06) \\
-			50                                                                    & 0.62(0.08) & 0.65(0.04) & 1.00(0.03) \\
-			53                                                                    & 0.69(0.06) & 0.71(0.04) & 0.83(0.02) \\
-			55                                                                    & 0.81(0.09) & 0.87(0.03) & 0.71(0.03) \\
-			\cmidrule(r){2-4}
-			mean                                                                  & 0.766      & 0.810      & 0.889      \\
-			Non-zero pct                                                          & 100\%      & 83.64\%    & 72.73\%    \\
-			Overall Non-zero pct                                                  & 100\%      & 38.68\%    & 13.69\%    \\
-			MSE                                                                   & 0.231      & 0.231      & 0.237      \\ \bottomrule
-		\end{tabular}
-	}
-\end{table}
+\begin{letter}{Sr. Director \\ Economics Technology R\&D \\ SAS Institute Inc
+		\\ SAS Campus Drive \\ Cary, NC. 27513}
+	\opening{Hello, Mark:}
 
+I am a doctoral candidate in the department of Economics in NC state University. I received a email from our director that  your department is looking for a graduate student specialized on time series econometrics. I believe I am a qualified candidate for this position for the experience I have.
 
-\begin{tabular}{llr}
-	\toprule
-	\multicolumn{2}{c}{Item} \\
-	\cmidrule(r){1-2}
-	Animal    & Description & Price (\$) \\
-	\midrule
-	Gnat      & per gram    & 13.65      \\
-	& each        & 0.01       \\
-	Gnu       & stuffed     & 92.50      \\
-	Emu       & stuffed     & 33.33      \\
-	Armadillo & frozen      & 8.99       \\
-	\bottomrule
-\end{tabular}
+\paragraph{Experience  with econometrics}
+I have finished 10 classes related to statistics and econometrics during my last 3 years of graduate studying (class details see attached transcript). I have been a teaching assistant for Phd level econometrics courses in our department for one year which include ECG751 Econometrics method and ECG752 time series econometrics. I am currently working a paper in financial econometrics modeling price volatility with my advisor Dr Pelletier. My dissertation will also be  based on such field. 
+
+Experience with programming
+My first experience in SAS was processing and modeling with big data for my course paper in year 2013. Then I attended 2014 summer session of SAS taught by a nice lady Joy Smith in department of statistics. To keep doing some work in SAS, I enrolled in ST555 statistical programming in 2015 Spring semester which taught SAS in 80\% time and R in 20\%. The next step in my plan is to learn some macro programming in SAS. I am enthusiastic in programming. Since I need to do my research with matlab by the request of my advisor, I took a course in computer science in 2014 fall. The formal training of programming give me a sense of how to writing code in good habits. In short, I like programing and plan to start my career in this field.
+
+Experience with technical writing
+I use \LaTex\ to write my thesis and this cover letter. I used R markdown in ST 555 for homework assignment.
 
 
 
+list of supplemental materials:
+Some code in my research        https://github.com/crazylaoshen
 
 
 
+\signature{Ji Shen}
+\closing{Best Regards,}
+
+\ps
+P.S. You can find Some code in my research at
+\url{https://github.com/crazylaoshen}.
+
+\end{letter}
 \end{document}
